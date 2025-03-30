@@ -1,40 +1,53 @@
 const playPauseBtn = document.getElementById("play-pause-btn");
 const audioPlayer = document.getElementById("audio-player");
 const albumCoverImg = document.getElementById("album-cover-img");
+const nextBtn = document.getElementById("next-btn");
+let currentIndex = 0;
+const songAudio = [
+  "audio/Helena.mp3",
+  "audio/Black No. 1 (Little Miss Scare -All).mp3",
+  "audio/Tear You Apart.mp3",
+  "audio/Take Me.mp3",
+  "audio/Come Undone.mp3",
 
-// Данные для песни и обложки (можно заменить на свои файлы)
-const songData = {
-  audioSrc: 'audio/Helena.mp3', // Путь к аудиофайлу
-  coverSrc: src="https://lh3.googleusercontent.com/5JtzMbsUJfBViHSlte4ddyD7kd__O7w7JtK1Icwwb8xXMQZkgy7DYfKnVS57oEvEBQwlv6Z1VhbVdcpx8A=w544-h544-l90-rj" // Путь к обложке
-};
+];
+const songCover = [
+  "https://lh3.googleusercontent.com/5JtzMbsUJfBViHSlte4ddyD7kd__O7w7JtK1Icwwb8xXMQZkgy7DYfKnVS57oEvEBQwlv6Z1VhbVdcpx8A=w544-h544-l90-rj",
+  "https://lh3.googleusercontent.com/wUTtzSfDfwiVcMLfidplDBVLIxtAAJQD_Ib6izsgZWuWJlcXlQZ-ArERzUpI31ES16ThgPStXOvNlP4=w544-h544-l90-rj",
+  "https://lh3.googleusercontent.com/N-J6DkwVQ_5QP4f4eyeC-2RXVwB1DvO3FUkLVFGioq46LVGFRuzgQBijjp8TKtfIG-a_q-8sTftUt-s=w544-h544-s-l90-rj",
+  "https://lh3.googleusercontent.com/jv4wTApw67zzZbF17bkcvdED-Spwt43Mb62sCZOLgGLvv517Mw4SCykS04kj-jMFy6P7LkyZuQMR3nwL=w544-h544-l90-rj",
+  "https://lh3.googleusercontent.com/BBR2BBgn5JXKEm9gC3ddqKwyOJ3OsMZiWHTf-6BeBhoqzq0w5bay_p9H4xgXSZTj__74XvVFVMei4bOf=w544-h544-l90-rj"
+];
 
-const loadSong = (songData) => {
-  // Устанавливаем путь к аудио
+
+const loadSong = (audioSrc, coverSrc) => {
   const audioSource = document.createElement("source");
-  audioSource.src = songData.audioSrc;
+  audioSource.src = audioSrc;
   audioSource.type = "audio/mp3";
-  audioPlayer.innerHTML = ''; // Очищаем старые элементы
-  audioPlayer.appendChild(audioSource); // Добавляем новый источник
+  audioPlayer.innerHTML = ''; 
+  audioPlayer.appendChild(audioSource);
 
-  // Устанавливаем обложку альбома
-  albumCoverImg.src = songData.coverSrc;
+  albumCoverImg.src = coverSrc;
 
-  // Загружаем источник в плеере
   audioPlayer.load();
 };
 
-// Функция для переключения состояния плеера
 playPauseBtn.addEventListener("click", () => {
   if (audioPlayer.paused) {
     audioPlayer.play();
-    playPauseBtn.textContent = "❚❚"; // Ставим паузу
+    playPauseBtn.textContent = "❚❚"; 
   } else {
     audioPlayer.pause();
-    playPauseBtn.textContent = "►"; // Ставим воспроизведение
+    playPauseBtn.textContent = "►";
   }
 });
 
-// Загрузка песни и обложки при загрузке страницы
+nextBtn.addEventListener("click", () =>{
+  currentIndex = (currentIndex + 1) % songCover.length;
+  loadSong(songAudio[currentIndex], songCover[currentIndex]);
+});
+
 window.onload = () => {
-  loadSong(songData);
+  loadSong(songAudio[currentIndex], songCover[currentIndex]);
+
 };
