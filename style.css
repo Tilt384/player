@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #121212;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #181818, #1c1c1c);
+  }
+  
+  .player-container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7); /* Прозрачный фон для улучшенной видимости */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9); /* Увеличенный и более мягкий эффект тени */
+    backdrop-filter: blur(12px); /* Усиленный эффект размытия фона */
+    width: 350px; /* Фиксированная ширина для лучшего контроля */
+  }
+  
+  .album-cover img {
+    width: 240px; /* Немного увеличена обложка */
+    height: 240px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .album-cover img:hover {
+    transform: scale(1.08); /* Немного больше увеличение при наведении */
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* Увеличение теней при наведении */
+  }
+  
+  .player-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid #333;
+    padding: 14px 35px; /* Увеличены отступы */
+    font-size: 22px; /* Увеличен шрифт для кнопок */
+    cursor: pointer;
+    border-radius: 30px; /* Более округлый вид кнопок */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  
+  button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1); /* Увеличена анимация масштаба */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); /* Добавлена тень при наведении */
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  audio {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px; /* Немного более округлые углы */
+    border: none;
+    padding: 12px; /* Увеличены отступы */
+    margin-top: 15px;
+  }
+  
+  audio::-webkit-media-controls-panel {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  
+  audio::-webkit-media-controls-play-button {
+    background-color: transparent;
+  }
+  
+  audio::-webkit-media-controls-volume-slider {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
