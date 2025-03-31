@@ -68,5 +68,13 @@ beforeBtn.addEventListener("click", () =>{
 
 window.onload = () => {
   loadSong(songAudio[currentIndex], songCover[currentIndex]);
-
+  for (let i = 0; i < songCover.length; i++) {
+      const songlistalbumcover = document.getElementById("songilist-albumcover" + i);
+      songlistalbumcover.addEventListener("click", () =>{
+        audioPlayer.pause();
+        playPauseBtn.textContent = "►";
+        loadSong(songAudio[i], songCover[i]);
+      });
+      songlistalbumcover.src = songCover[i];
+  }
 };
