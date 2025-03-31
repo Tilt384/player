@@ -2,6 +2,7 @@ const playPauseBtn = document.getElementById("play-pause-btn");
 const audioPlayer = document.getElementById("audio-player");
 const albumCoverImg = document.getElementById("album-cover-img");
 const nextBtn = document.getElementById("next-btn");
+const beforeBtn = document.getElementById("before-btn");
 let currentIndex = 0;
 const songAudio = [
   "audio/Helena.mp3",
@@ -54,6 +55,14 @@ playPauseBtn.addEventListener("click", () => {
 
 nextBtn.addEventListener("click", () =>{
   currentIndex = (currentIndex + 1) % songCover.length;
+  audioPlayer.pause();
+  playPauseBtn.textContent = "►";
+  loadSong(songAudio[currentIndex], songCover[currentIndex]);
+});
+beforeBtn.addEventListener("click", () =>{
+  currentIndex = (currentIndex - 1) % songCover.length;
+  audioPlayer.pause();
+  playPauseBtn.textContent = "►";
   loadSong(songAudio[currentIndex], songCover[currentIndex]);
 });
 
